@@ -411,9 +411,6 @@ hostapd_set_bss_options() {
 			for kh in $r0kh; do
 				append bss_conf "r0kh=${kh//,/ }" "$N"
 			done
-			for kh in $r1kh; do
-				append bss_conf "r1kh=${kh//,/ }" "$N"
-			done
 		fi
 
 		hostapd_append_wpa_key_mgmt
