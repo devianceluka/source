@@ -393,19 +393,20 @@ hostapd_set_bss_options() {
 			json_get_values r1kh r1kh
 
 			set_default mobility_domain "4f57"
+			set_default r0_key_lifetime 10000
+			set_default r1_key_holder "00004f577274"
 			set_default reassociation_deadline 1000
-			set_default ft_psk_generate_local 1
-			set_default ft_over_ds 0
-			[ -n "$nasid" ] || append bss_conf "nas_identifier=$(uci get system.@system[0].hostname)" "$N"
+			set_default pmk_r1_push 0
+			set_default ft_psk_generate_local 0
+			set_default ft_over_ds 1
 
 			append bss_conf "mobility_domain=$mobility_domain" "$N"
+			append bss_conf "r0_key_lifetime=$r0_key_lifetime" "$N"
+			append bss_conf "r1_key_holder=$r1_key_holder" "$N"
 			append bss_conf "reassociation_deadline=$reassociation_deadline" "$N"
+			append bss_conf "pmk_r1_push=$pmk_r1_push" "$N"
 			append bss_conf "ft_psk_generate_local=$ft_psk_generate_local" "$N"
 			append bss_conf "ft_over_ds=$ft_over_ds" "$N"
-
-			[ -n "$r0_key_lifetime" ] && append bss_conf "r0_key_lifetime=$r0_key_lifetime" "$N"
-			[ -n "$r1_key_holder" ] && append bss_conf "r1_key_holder=$r1_key_holder" "$N"
-			[ -n "$pmk_r1_push" ] && append bss_conf "pmk_r1_push=$pmk_r1_push" "$N"
 
 			for kh in $r0kh; do
 				append bss_conf "r0kh=${kh//,/ }" "$N"
