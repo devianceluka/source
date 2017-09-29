@@ -402,7 +402,6 @@ hostapd_set_bss_options() {
 
 			append bss_conf "mobility_domain=$mobility_domain" "$N"
 			append bss_conf "r0_key_lifetime=$r0_key_lifetime" "$N"
-			append bss_conf "r1_key_holder=$r1_key_holder" "$N"
 			append bss_conf "reassociation_deadline=$reassociation_deadline" "$N"
 			append bss_conf "ft_psk_generate_local=$ft_psk_generate_local" "$N"
 			append bss_conf "ft_over_ds=$ft_over_ds" "$N"
