@@ -407,10 +407,6 @@ hostapd_set_bss_options() {
 			append bss_conf "pmk_r1_push=$pmk_r1_push" "$N"
 			append bss_conf "ft_psk_generate_local=$ft_psk_generate_local" "$N"
 			append bss_conf "ft_over_ds=$ft_over_ds" "$N"
-
-			for kh in $r0kh; do
-				append bss_conf "r0kh=${kh//,/ }" "$N"
-			done
 		fi
 
 		hostapd_append_wpa_key_mgmt
