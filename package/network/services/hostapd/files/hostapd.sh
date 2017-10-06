@@ -404,6 +404,7 @@ hostapd_set_bss_options() {
 			append bss_conf "reassociation_deadline=$reassociation_deadline" "$N"
 			append bss_conf "ft_psk_generate_local=$ft_psk_generate_local" "$N"
 			append bss_conf "ft_over_ds=$ft_over_ds" "$N"
+			[ -n "$nasid" ] || append bss_conf "nas_identifier=${macaddr//\:}" "$N"
 		fi
 
 		hostapd_append_wpa_key_mgmt
